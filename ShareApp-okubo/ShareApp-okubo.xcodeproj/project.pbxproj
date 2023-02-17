@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7FB83B95299F381D00888372 /* TextCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB83B94299F381D00888372 /* TextCreateView.swift */; };
 		7FEEDA77299CC0BF0029167C /* ShareApp_okuboApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */; };
 		7FEEDA79299CC0BF0029167C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDA78299CC0BF0029167C /* ContentView.swift */; };
 		7FEEDA7B299CC0C10029167C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEEDA7A299CC0C10029167C /* Assets.xcassets */; };
@@ -14,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7FB83B94299F381D00888372 /* TextCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateView.swift; sourceTree = "<group>"; };
+		7FB83B96299F391E00888372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7FEEDA73299CC0BF0029167C /* ShareApp-okubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShareApp-okubo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareApp_okuboApp.swift; sourceTree = "<group>"; };
 		7FEEDA78299CC0BF0029167C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,8 +54,10 @@
 		7FEEDA75299CC0BF0029167C /* ShareApp-okubo */ = {
 			isa = PBXGroup;
 			children = (
+				7FB83B96299F391E00888372 /* Info.plist */,
 				7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */,
 				7FEEDA78299CC0BF0029167C /* ContentView.swift */,
+				7FB83B94299F381D00888372 /* TextCreateView.swift */,
 				7FEEDA7A299CC0C10029167C /* Assets.xcassets */,
 				7FEEDA7C299CC0C10029167C /* Preview Content */,
 			);
@@ -137,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FB83B95299F381D00888372 /* TextCreateView.swift in Sources */,
 				7FEEDA79299CC0BF0029167C /* ContentView.swift in Sources */,
 				7FEEDA77299CC0BF0029167C /* ShareApp_okuboApp.swift in Sources */,
 			);
@@ -270,7 +276,7 @@
 				DEVELOPMENT_TEAM = PW2MXY74G2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "ShareApp-okubo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -299,7 +305,7 @@
 				DEVELOPMENT_TEAM = PW2MXY74G2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = "ShareApp-okubo/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
