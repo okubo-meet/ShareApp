@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F63E24129A876C500E9E8DD /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F63E24029A876C500E9E8DD /* DataScannerView.swift */; };
 		7FB83B95299F381D00888372 /* TextCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB83B94299F381D00888372 /* TextCreateView.swift */; };
 		7FEEDA77299CC0BF0029167C /* ShareApp_okuboApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */; };
 		7FEEDA79299CC0BF0029167C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDA78299CC0BF0029167C /* ContentView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F63E24029A876C500E9E8DD /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		7FB83B94299F381D00888372 /* TextCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateView.swift; sourceTree = "<group>"; };
 		7FB83B96299F391E00888372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7FEEDA73299CC0BF0029167C /* ShareApp-okubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShareApp-okubo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +60,7 @@
 				7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */,
 				7FEEDA78299CC0BF0029167C /* ContentView.swift */,
 				7FB83B94299F381D00888372 /* TextCreateView.swift */,
+				7F63E24029A876C500E9E8DD /* DataScannerView.swift */,
 				7FEEDA7A299CC0C10029167C /* Assets.xcassets */,
 				7FEEDA7C299CC0C10029167C /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 				7FB83B95299F381D00888372 /* TextCreateView.swift in Sources */,
 				7FEEDA79299CC0BF0029167C /* ContentView.swift in Sources */,
 				7FEEDA77299CC0BF0029167C /* ShareApp_okuboApp.swift in Sources */,
+				7F63E24129A876C500E9E8DD /* DataScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +281,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ShareApp-okubo/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリは文字認識機能のためにカメラを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -306,6 +311,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "ShareApp-okubo/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "このアプリは文字認識機能のためにカメラを使用します。";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

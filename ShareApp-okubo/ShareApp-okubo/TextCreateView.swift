@@ -6,20 +6,18 @@
 //
 
 import SwiftUI
+import VisionKit
 // 文章作成画面
 struct TextCreateView: View {
     // MARK: - プロパティ
     // 本文に表示する文字列
     @State private var bodyText = ""
-    // カメラで読み取った文字列
-    @State private var resultText = ""
-    // TextFieldのフォーカス
-    enum Field: Int, Hashable {
-        case body = 0
-        case result = 1
-    }
+    // 文字認識カメラの起動フラグ
+    @State private var showDataScanner = false
     // フォーカス制御する変数
-    @FocusState private var focusField: Field?
+    @FocusState private var fieldFocus: Bool
+    // 自動スクロールのID
+    private let scrollPoint = 0
     // MARK: - View
     var body: some View {
         ScrollViewReader { scrollProxy in
@@ -37,56 +35,59 @@ struct TextCreateView: View {
                 // シェアする文章
                 Section {
                     TextField("シェアする文章を入力してください", text: $bodyText, axis: .vertical)
-                        .focused($focusField, equals: .body)
-                        .id(Field.body.rawValue)
+                        .focused($fieldFocus)
+                        .id(scrollPoint)
                 } header: {
                     Text("本文")
                         .font(.subheadline)
-                }
-                // 文字認識関連
-                Section {
-                    // カメラ起動ボタン
-                    Button(action: {
-                        // カメラ画面を呼び出す
-                    }) {
-                        Label("カメラを起動する", systemImage: "camera")
+                } footer: {
+                    if DataScannerViewController.isSupported {
+                        Text("カメラで認識した文字をタップしてコピー&ペーストができます。")
+                    } else {
+                        Label("デバイスがLive Text機能に対応していません。", systemImage: "exclamationmark.circle")
+                            .foregroundColor(.red)
                     }
-                    TextField("読み取った文字が表示されます", text: $resultText, axis: .vertical)
-                        .focused($focusField, equals: .result)
-                        .id(Field.result.rawValue)
-                    Button(action: {
-                        // クリップボードにコピーする（カメラ機能を作成してから）
-                    }) {
-                        Label("読み取った文字をコピーする", systemImage: "doc.on.doc")
-                    }
-                } header: {
-                    Text("カメラで文字を読み取る")
-                        .font(.subheadline)
                 }
                 // シェア機能
                 ShareLink(item: bodyText) {
                     Label("本文をシェアする", systemImage: "square.and.arrow.up")
                 }
             }// Form
-            .onChange(of: focusField) { focus in
+            .onChange(of: fieldFocus) { focus in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                     withAnimation {
-                        if let focus = focus {
-                            scrollProxy.scrollTo(focus.rawValue, anchor: .center)
+                        if focus == true {
+                            scrollProxy.scrollTo(scrollPoint, anchor: .center)
                         }
                     }
                 }
             }// onChange
         }// ScrollViewReader
+        .sheet(isPresented: $showDataScanner) {
+            DataScannerView()
+        }
         .navigationTitle("文章作成")
         .navigationBarTitleDisplayMode(.large)
         .toolbar(content: {
-            // キーボードを閉じるボタン
+            // キーボードの上に追加するツールバー
             ToolbarItemGroup(placement: .keyboard, content: {
+                if DataScannerViewController.isSupported {
+                    // カメラ起動ボタン
+                    Button(action: {
+                        // カメラ画面を呼び出す
+                        showDataScanner.toggle()
+                    }) {
+                        HStack {
+                            Image(systemName: "text.viewfinder")
+                            Text("文字認識")
+                        }
+                    }
+                }
                 Spacer()
+                // キーボードを閉じるボタン
                 Button("閉じる") {
                     // フォーカスを無効にする
-                    focusField = nil
+                    fieldFocus.toggle()
                 }
             })
         })// toolbar
