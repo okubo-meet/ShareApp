@@ -10,12 +10,24 @@ import VisionKit
 // 文章作成画面
 struct TextCreateView: View {
     // MARK: - プロパティ
+    // 使用中のテンプレート
+    @State private var selectedTemplate: TestTemplate?
     // 本文に表示する文字列
     @State private var bodyText = ""
     // 文字認識カメラの起動フラグ
     @State private var showDataScanner = false
     // フォーカス制御する変数
     @FocusState private var fieldFocus: Bool
+    // テンプレートのタイトル
+    private var templateTitle: String {
+        // テンプレートがnilでない時
+        if let template = selectedTemplate {
+            // タイトルの文字列を返す
+            return template.title
+        } else {
+            return "テンプレート無し"
+        }
+    }
     // 自動スクロールのID
     private let scrollPoint = 0
     // MARK: - View
@@ -24,10 +36,9 @@ struct TextCreateView: View {
             Form {
                 // テンプレート選択
                 Section {
-                    Button("テンプレート無し") {
-                        // 後でNavigationLinkに変更する
+                    NavigationLink(templateTitle) {
+                        TemplateListView(selectedTemplate: $selectedTemplate)
                     }
-                    
                 } header: {
                     Text("テンプレート選択")
                         .font(.subheadline)
@@ -85,12 +96,21 @@ struct TextCreateView: View {
                 }
                 Spacer()
                 // キーボードを閉じるボタン
-                Button("閉じる") {
+                Button("完了") {
                     // フォーカスを無効にする
                     fieldFocus.toggle()
                 }
             })
         })// toolbar
+        .onAppear {
+            // テンプレートが選択されている場合
+            if let template = selectedTemplate {
+                // 本文にテンプレートを代入
+                bodyText = template.body
+            } else {
+                bodyText = ""
+            }
+        }
     }// body
 }
 
