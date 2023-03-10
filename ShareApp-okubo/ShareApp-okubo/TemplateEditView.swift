@@ -11,10 +11,12 @@ struct TemplateEditView: View {
     // MARK: - プロパティ
     // 環境変数で取得したdismissハンドラー
     @Environment(\.dismiss) var dismiss
-    // テストデータを扱うクラス
-    @EnvironmentObject var testData: TestData
-    // 編集するテンプレートのインデックス番号
-    @Binding var editIndex: Int?
+    // 被管理オブジェクトコンテキスト（ManagedObjectContext）の取得
+    @Environment(\.managedObjectContext) private var context
+    // CoreDataから取得したテンプレート
+    @FetchRequest(entity: Template.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Template.createdDate, ascending: false)], animation: .default) private var templates: FetchedResults<Template>
+    // 編集するテンプレートの識別ID
+    @Binding var editedID: UUID?
     // キーボードのフォーカスの列挙型
     enum Field: Hashable {
         case title
@@ -38,6 +40,16 @@ struct TemplateEditView: View {
             return true
         }
         return false
+    }
+    // 編集される既存のテンプレート
+    private var editedTemplate: Template? {
+        // 識別IDから編集されるテンプレートを返す
+        if let id = editedID {
+            if let template = templates.first(where: { $0.id == id }) {
+                return template
+            }
+        }
+        return nil
     }
     // MARK: - View
     var body: some View {
@@ -65,17 +77,8 @@ struct TemplateEditView: View {
                     Spacer()
                     Button("保存") {
                         // テンプレートを保存する処理
-                        if let editIndex = editIndex {
-                            // 既存のテンプレートの上書き
-                            testData.templates[editIndex].title = titleText
-                            testData.templates[editIndex].body = bodyText
-                        } else {
-                            // 新規作成
-                            let newTemplate = TestTemplate(title: titleText,
-                                                           body: bodyText,
-                                                           createdDate: Date())
-                            testData.templates.append(newTemplate)
-                        }
+                        saveTemplate(title: titleText, body: bodyText)
+                        // 保存完了アラート表示
                         showAlert.toggle()
                     }
                     .font(.title3)
@@ -110,18 +113,41 @@ struct TemplateEditView: View {
         })// toolbar
         .onAppear {
             // 既存のテンプレート編集の場合
-            if let editIndex = editIndex {
-                let template = testData.templates[editIndex]
-                // タイトルと本文を代入
-                titleText = template.title
-                bodyText = template.body
+            if let editedTemplate = editedTemplate {
+                titleText = editedTemplate.title!
+                bodyText = editedTemplate.body!
             }
         }
     }// body
+    // MARK: - メソッド
+    // テンプレートを保存する関数
+    private func saveTemplate(title: String, body: String) {
+        // 既存のテンプレートの上書きか判定
+        if let editedTemplate = editedTemplate {
+            // 引数の値で上書きする
+            editedTemplate.title = title
+            editedTemplate.body = body
+            print("上書き保存： \(editedTemplate)")
+        } else {
+            // 新規作成
+            let newTemplate = Template(context: context)
+            newTemplate.id = UUID()
+            newTemplate.title = title
+            newTemplate.body = body
+            newTemplate.createdDate = Date()
+            print("新規作成： \(newTemplate)")
+        }
+        // 保存
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
 }
 
 struct TemplateEditView_Previews: PreviewProvider {
     static var previews: some View {
-        TemplateEditView(editIndex: .constant(nil))
+        TemplateEditView(editedID: .constant(nil))
     }
 }
