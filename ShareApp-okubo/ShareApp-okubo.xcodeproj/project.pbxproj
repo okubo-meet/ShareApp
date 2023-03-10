@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F27288E29B5AFA90071BD9F /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27288D29B5AFA90071BD9F /* TestData.swift */; };
+		7F27289029B5BB4A0071BD9F /* ListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F27288F29B5BB4A0071BD9F /* ListRowView.swift */; };
 		7F63E24129A876C500E9E8DD /* DataScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F63E24029A876C500E9E8DD /* DataScannerView.swift */; };
 		7FB83B95299F381D00888372 /* TextCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB83B94299F381D00888372 /* TextCreateView.swift */; };
+		7FC42C2829B1A9BF006190DC /* TemplateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC42C2729B1A9BF006190DC /* TemplateListView.swift */; };
+		7FC42C2A29B1AE6C006190DC /* TemplateEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC42C2929B1AE6C006190DC /* TemplateEditView.swift */; };
 		7FEEDA77299CC0BF0029167C /* ShareApp_okuboApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */; };
 		7FEEDA79299CC0BF0029167C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEEDA78299CC0BF0029167C /* ContentView.swift */; };
 		7FEEDA7B299CC0C10029167C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7FEEDA7A299CC0C10029167C /* Assets.xcassets */; };
@@ -16,9 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F27288D29B5AFA90071BD9F /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		7F27288F29B5BB4A0071BD9F /* ListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowView.swift; sourceTree = "<group>"; };
 		7F63E24029A876C500E9E8DD /* DataScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataScannerView.swift; sourceTree = "<group>"; };
 		7FB83B94299F381D00888372 /* TextCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCreateView.swift; sourceTree = "<group>"; };
 		7FB83B96299F391E00888372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7FC42C2729B1A9BF006190DC /* TemplateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListView.swift; sourceTree = "<group>"; };
+		7FC42C2929B1AE6C006190DC /* TemplateEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateEditView.swift; sourceTree = "<group>"; };
 		7FEEDA73299CC0BF0029167C /* ShareApp-okubo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShareApp-okubo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7FEEDA76299CC0BF0029167C /* ShareApp_okuboApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareApp_okuboApp.swift; sourceTree = "<group>"; };
 		7FEEDA78299CC0BF0029167C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +69,10 @@
 				7FEEDA78299CC0BF0029167C /* ContentView.swift */,
 				7FB83B94299F381D00888372 /* TextCreateView.swift */,
 				7F63E24029A876C500E9E8DD /* DataScannerView.swift */,
+				7FC42C2729B1A9BF006190DC /* TemplateListView.swift */,
+				7F27288F29B5BB4A0071BD9F /* ListRowView.swift */,
+				7FC42C2929B1AE6C006190DC /* TemplateEditView.swift */,
+				7F27288D29B5AFA90071BD9F /* TestData.swift */,
 				7FEEDA7A299CC0C10029167C /* Assets.xcassets */,
 				7FEEDA7C299CC0C10029167C /* Preview Content */,
 			);
@@ -145,9 +157,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7FC42C2A29B1AE6C006190DC /* TemplateEditView.swift in Sources */,
 				7FB83B95299F381D00888372 /* TextCreateView.swift in Sources */,
+				7FC42C2829B1A9BF006190DC /* TemplateListView.swift in Sources */,
+				7F27289029B5BB4A0071BD9F /* ListRowView.swift in Sources */,
 				7FEEDA79299CC0BF0029167C /* ContentView.swift in Sources */,
 				7FEEDA77299CC0BF0029167C /* ShareApp_okuboApp.swift in Sources */,
+				7F27288E29B5AFA90071BD9F /* TestData.swift in Sources */,
 				7F63E24129A876C500E9E8DD /* DataScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
