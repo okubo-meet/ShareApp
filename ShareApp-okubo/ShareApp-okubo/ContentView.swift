@@ -9,9 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            TextCreateView()
-        }
+        // NavigationStackをContentViewで宣言していると、NavigationLinkを押した時にCPU使用率が99%近くになってフリーズしてしまう不具合が発生
+        TextCreateView()
     }
 }
 
